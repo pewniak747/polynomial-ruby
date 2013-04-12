@@ -130,4 +130,22 @@ describe Polynomial do
       (polynomial * other_polynomial).coefficients.should == [3, 11, 21, 23, 14, 12]
     end
   end
+
+  describe "#==" do
+    subject(:polynomial) { described_class.new([1, 2, 3]) }
+
+    it "should be true when coefficients are the same" do
+      other_polynomial = described_class.new([1, 2, 3])
+      (polynomial == other_polynomial).should be_true
+    end
+
+    it "should be false when coefficients are different" do
+      other_polynomial = described_class.new([1, 2, 0])
+      (polynomial == other_polynomial).should be_false
+    end
+
+    it "should be false when comparing with other object" do
+      (polynomial == Object.new).should be_false
+    end
+  end
 end

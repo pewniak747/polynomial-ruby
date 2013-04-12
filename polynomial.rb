@@ -43,6 +43,13 @@ class Polynomial
     self + (other * -1)
   end
 
+  def ==(other)
+    if(other.kind_of?(self.class))
+      coefficients == other.coefficients
+    else super
+    end
+  end
+
   def to_s
     coefficients[1..-1].reverse.map.with_index { |c, i|
       sign = if(i != 0)
