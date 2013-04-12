@@ -43,7 +43,18 @@ class Polynomial
     self + (other * -1)
   end
 
+  def to_s
+    coefficients[1..-1].reverse.map.with_index { |c, i|
+      sign = if(i != 0)
+        if(c > 0) then "+"
+        elsif(c < 0) then "-"
+        end
+      end
+      [sign, "#{"%0.5f" % c}x^#{degree-i}"].join(' ') unless c == 0
+    }.push(coefficients[0] != 0 ? "+ #{coefficients[0]}" : nil).compact.join(' ')
+  end
+
   def inspect
-    "#<Polynomial: #{coefficients[1..-1].reverse.map.with_index { |c, i| "#{c}x^#{degree - i}" }.join(' + ')} + #{coefficients[0]}>"
+    "#<Polynomial: #{to_s} >"
   end
 end
