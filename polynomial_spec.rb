@@ -1,5 +1,5 @@
 require 'rspec'
-require_relative './interpolation'
+require_relative './polynomial'
 
 describe Polynomial do
   describe "#coefficients" do
