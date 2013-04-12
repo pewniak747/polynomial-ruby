@@ -1,6 +1,6 @@
 require 'rspec'
 
-require_relative './lagrange_polynomial'
+require_relative '../lagrange_polynomial'
 
 describe LagrangePolynomial do
   subject(:lagrange_polynomial) { described_class.new([[1.0, 1.0], [2.0, 4.0], [3.0, 9.0]]) }
