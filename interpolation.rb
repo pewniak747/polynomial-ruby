@@ -17,6 +17,6 @@ lagrange_polynomial = LagrangePolynomial.new(points).call
 lagrange_solution   = LagrangeAlgorithm.new(points).call(point)
 neville_solution    = NevilleAlgorithm.new(points).call(point)
 
-puts "Lagrange polynomial:                      #{lagrange_polynomial}"
+puts "Lagrange polynomial:                   #{lagrange_polynomial}"
 puts "Lagrange algorithm solution for #{point}: #{"%0.5f" % lagrange_solution}"
 puts "Neville algorithm solution for #{point}:  #{"%0.5f" % neville_solution}"
