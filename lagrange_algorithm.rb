@@ -1,11 +1,6 @@
-class LagrangeAlgorithm
-  attr_accessor :points, :values
+require_relative 'interpolation_algorithm'
 
-  def initialize(input)
-    self.points = input.map { |a, _| a }
-    self.values = input.map { |_, b| b }
-  end
-
+class LagrangeAlgorithm < InterpolationAlgorithm
   def call(point)
     basis_polynomials(point).zip(values)
                      .map { |p, v| p * v }
@@ -24,4 +19,3 @@ class LagrangeAlgorithm
     }
   end
 end
-
