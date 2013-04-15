@@ -43,6 +43,14 @@ class Polynomial
     self + (other * -1)
   end
 
+  def /(other)
+    if(other.kind_of?(Numeric))
+      Polynomial.new(coefficients.map { |c| c / other })
+    else
+      raise "cannot divide #{self} by #{other}"
+    end
+  end
+
   def ==(other)
     if(other.kind_of?(self.class))
       coefficients == other.coefficients

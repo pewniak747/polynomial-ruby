@@ -18,11 +18,15 @@ class LagrangePolynomial
 
   def basis_polynomials
     Array.new(points.size) { |j|
-      points.map.with_index { |_, m|
-        unless(j == m)
-          Polynomial.new([ (-1*points[m])/(points[j] - points[m]), 1/(points[j] - points[m])])
-        end
-      }.compact.reduce(:*)
+      numerator = Polynomial.new([BigDecimal(1)])
+      denominator = BigDecimal(1)
+      points.each_with_index { |el, m|
+        numerator *= Polynomial.new([BigDecimal(0), BigDecimal(1)]) - el unless(j == m)
+      }
+      points.each_with_index { |el, m|
+        denominator *= (points[j] - points[m]) unless(j == m)
+      }
+      numerator / denominator
     }
   end
 end
