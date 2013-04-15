@@ -56,7 +56,7 @@ class Polynomial
         if(c > 0) then "+"
         end
       end
-      [sign, "#{"%0.5f" % c}x^#{degree-i}"].join unless c == 0
+      [sign, "#{c}x^#{degree-i}"].join unless c == 0
     }.push(coefficients[0] != 0 ? "+ #{coefficients[0]}" : nil).compact.join
   end
 
