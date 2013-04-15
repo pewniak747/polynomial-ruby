@@ -11,11 +11,15 @@ class LagrangeAlgorithm < InterpolationAlgorithm
 
   def basis_polynomials(point)
     Array.new(points.size) { |j|
-      points.map.with_index { |_, m|
-        unless(j == m)
-          (point - points[m])/(points[j] - points[m])
-        end
-      }.compact.reduce(:*)
+      numerator = BigDecimal(1)
+      denominator = BigDecimal(1)
+      points.each_with_index { |el, m|
+        numerator *= (point - points[m]) unless(j == m)
+      }
+      points.each_with_index { |el, m|
+        denominator *= (points[j] - points[m]) unless(j == m)
+      }
+      numerator / denominator
     }
   end
 end
